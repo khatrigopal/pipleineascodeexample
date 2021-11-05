@@ -5,9 +5,13 @@ pipeline {
   maven 'M2_HOME'
   }
   stages {
-    stage ('Build') {
+    stage ('Checkout') {
       steps {
-      git 'https://github.com/cloudtechmasters/spring-boot-azure-micro-svc-sept19'
+      git 'https://github.com/cloudtechmasters/spring-boot-azure-micro-svc-sept19'      
+      }
+    }
+    stage ('Build') {
+      steps {      
       sh 'mvn -Dmaven.test.failure.ignore=true clean package'
       }
     }
