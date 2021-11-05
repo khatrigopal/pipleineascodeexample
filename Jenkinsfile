@@ -7,7 +7,8 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
-      sh 'mvn clean install -f MyWebApp/pom.xml'
+      git 'https://github.com/cloudtechmasters/spring-boot-azure-micro-svc-sept19'
+      sh 'mvn -Dmaven.test.failure.ignore=true clean package'
       }
     }
     stage ('Code Quality') {
